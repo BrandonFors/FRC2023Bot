@@ -37,8 +37,7 @@ public class DriveTrainSub extends SubsystemBase {
   private RelativeEncoder leftDriveEncoder = FrontLeftMotor.getEncoder();
   private RelativeEncoder rightDriveEncoder = FrontRightMotor.getEncoder();
 
-  //air
-  private Solenoid sSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SolChannel);
+  
   
   private AHRS navX = new AHRS(SPI.Port.kMXP);
   
@@ -52,14 +51,7 @@ public class DriveTrainSub extends SubsystemBase {
   }
 
 
-  public void shiftOn(){
-    sSolenoid.set(true);
-
-    
-  }
-  public void shiftOff(){
-    sSolenoid.set(false);
-  }
+  
 
   public double getPitch(){
     return navX.getPitch();

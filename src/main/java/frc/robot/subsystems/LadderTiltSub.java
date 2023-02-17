@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import java.util.concurrent.CancellationException;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -13,25 +11,19 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class LadderSub extends SubsystemBase {
-  /** Creates a new LadderSub. */
-  private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushless);
-  
-  private final RelativeEncoder liftEncoder = liftMotor.getEncoder();
-  
-  
-  public LadderSub() {
-    
+public class LadderTiltSub extends SubsystemBase {
+  private final CANSparkMax tiltMotor = new CANSparkMax(Constants.elevatorTiltMotorChannel, MotorType.kBrushless);
+  private final RelativeEncoder tiltEncoder = tiltMotor.getEncoder();
+  public LadderTiltSub() {
+
   }
 
-  public void driveLift(double speed){
-    liftMotor.set(speed);
+  public void driveTilt(double speed){
+    tiltMotor.set(speed);
   }
 
-  
-
-  public double getLiftEncoder(){
-    return liftEncoder.getPosition();
+  public double getTiltEncoder(){
+    return tiltEncoder.getPosition();
   }
 
   @Override

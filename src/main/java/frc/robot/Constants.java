@@ -28,7 +28,8 @@ public final class Constants {
   
 
 
-  public static int SolChannel = 0;;
+  public static int SolFwdChannel = 1;
+  public static int SolBwdChannel = 0;
 
 
   //PID

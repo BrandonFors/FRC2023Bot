@@ -8,8 +8,13 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.BalanceRobotCom;
 import frc.robot.commands.DriveCom;
+import frc.robot.commands.ShiftDownCom;
 import frc.robot.commands.TeleDriveCom;
 import frc.robot.subsystems.DriveTrainSub;
+import frc.robot.subsystems.HerderSub;
+import frc.robot.subsystems.LadderSub;
+import frc.robot.subsystems.LadderTiltSub;
+import frc.robot.subsystems.ShifterSub;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,6 +33,10 @@ import java.util.function.Supplier;
 public class RobotContainer {
   
   private final DriveTrainSub m_DriveTrainSub = new DriveTrainSub();
+  private final HerderSub m_HerderSub = new HerderSub();
+  private final LadderSub m_LadderSub = new LadderSub();
+  private final LadderTiltSub m_LadderTiltSub = new LadderTiltSub();
+  private final ShifterSub m_ShifterSub = new ShifterSub();
 
   private final Joystick driveStick = new Joystick(Constants.DriveStickChannel);
   public final Joystick intakeStick = new Joystick(Constants.IntakeStickChannel);
@@ -41,9 +50,9 @@ public class RobotContainer {
     m_chooser.addOption(defaultAutoTxt, defaultAutoTxt);
 
     SmartDashboard.putData("Auto Choices", m_chooser);
-
+    
     m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*0.5, ()-> driveStick.getRawAxis(0)*0.5));
-
+    m_ShifterSub.setDefaultCommand(new ShiftDownCom(m_ShifterSub));
     configureBindings();  
   }
 
