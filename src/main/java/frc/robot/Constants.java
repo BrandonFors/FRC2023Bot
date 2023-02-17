@@ -17,10 +17,10 @@ public final class Constants {
   public static int DriveStickChannel = 0;
   public static int IntakeStickChannel = 0;
 //drive
-  public static int FrontRightMotorChannel = 2;
-  public static int FrontLeftMotorChannel = 4;
-  public static int BackRightMotorChannel = 9;
-  public static int BackLeftMotorChannel = 5;
+  public static int FrontRightMotorChannel = 3;
+  public static int FrontLeftMotorChannel = 12;
+  public static int BackRightMotorChannel = 13;
+  public static int BackLeftMotorChannel = 4;
 
   
 
@@ -29,7 +29,7 @@ public final class Constants {
 
 
   public static int SolFwdChannel = 1;
-  public static int SolBwdChannel = 0;
+  public static int SolBwdChannel = 0;  
 
 
   //PID
