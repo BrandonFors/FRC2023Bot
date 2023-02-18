@@ -14,7 +14,7 @@ public class TiltForwardCom extends CommandBase {
   private final PIDController m_PIDController;
   public TiltForwardCom(LadderTiltSub subsystem) {
     this.m_PIDController = new PIDController(Constants.tiltPVal, Constants.tiltIVal, Constants.tiltDVal);
-    m_PIDController.setSetpoint(Constants.tiltTopSetpoint);
+    m_PIDController.setSetpoint(-Constants.tiltTopSetpoint);
     
     m_subsystem = subsystem;
     

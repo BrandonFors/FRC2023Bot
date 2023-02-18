@@ -15,11 +15,11 @@ package frc.robot;
 public final class Constants {
 //sticks
   public static int DriveStickChannel = 0;
-  public static int IntakeStickChannel = 0;
+  public static int IntakeStickChannel = 1;
 //drive
   public static int FrontRightMotorChannel = 3;
-  public static int FrontLeftMotorChannel = 12;
-  public static int BackRightMotorChannel = 13;
+  public static int FrontLeftMotorChannel = 2;
+  public static int BackRightMotorChannel = 5;
   public static int BackLeftMotorChannel = 4;
 
   
@@ -40,8 +40,8 @@ public final class Constants {
 
 
   //elevator
-  public static int elevatorTiltMotorChannel = 5;
-  public static int elevatorLiftMotorChannel = 11;
+  public static int elevatorTiltMotorChannel = 7;
+  public static int elevatorLiftMotorChannel = 21;
   //el PID
   public static double liftPVal = 0;
   public static double liftIVal = 0;
@@ -49,19 +49,17 @@ public final class Constants {
   public static double liftTopSetpoint = 0;
   public static double liftBotSetpoint = 0;
 
-  public static double tiltPVal = 0;
+  public static double tiltPVal = 0.01;
   public static double tiltIVal = 0;
   public static double tiltDVal = 0;
-  public static double tiltTopSetpoint = 0;
+  public static double tiltTopSetpoint = 100;
   public static double tiltBotSetpoint = 0;
   //claw
-  public static int clawLeftMotorChannel = 6;
-  public static int clawRightMotorChannel = 7;
+  public static int clawLeftMotorChannel = 22;
+  public static int clawRightMotorChannel = 23;
 
 
   
 
-  public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-  }
+ 
 }

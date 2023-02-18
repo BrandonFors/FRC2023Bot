@@ -4,12 +4,15 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+
 import frc.robot.commands.Autos;
 import frc.robot.commands.BalanceRobotCom;
 import frc.robot.commands.DriveCom;
 import frc.robot.commands.ShiftDownCom;
+import frc.robot.commands.ShiftUpCom;
 import frc.robot.commands.TeleDriveCom;
+import frc.robot.commands.TiltBackwardCom;
+import frc.robot.commands.TiltForwardCom;
 import frc.robot.subsystems.DriveTrainSub;
 import frc.robot.subsystems.HerderSub;
 import frc.robot.subsystems.LadderSub;
@@ -21,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.util.function.Supplier;
 
@@ -51,8 +55,8 @@ public class RobotContainer {
 
     SmartDashboard.putData("Auto Choices", m_chooser);
     
-    m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*0.5, ()-> driveStick.getRawAxis(0)*0.5));
-    m_ShifterSub.setDefaultCommand(new ShiftDownCom(m_ShifterSub));
+    m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*(-0.75), ()-> driveStick.getRawAxis(0)*(-0.75)));
+    // m_ShifterSub.setDefaultCommand(new ShiftDownCom(m_ShifterSub));
     configureBindings();  
   }
 
@@ -67,6 +71,11 @@ public class RobotContainer {
    */
   private void configureBindings() {
     new JoystickButton(driveStick, 1).whileTrue(new BalanceRobotCom(m_DriveTrainSub,0));
+    new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
+    new JoystickButton(driveStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
+    new JoystickButton(driveStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
+
+
 
     // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }

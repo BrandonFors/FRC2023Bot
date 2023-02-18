@@ -17,9 +17,6 @@ public class ShiftUpCom extends CommandBase {
     addRequirements(subsystem);
   }
 
-  public void shift(){
-    m_subsystem.shiftOff();
-  }
 
   // Called when the command is initially scheduled.
   @Override
@@ -27,11 +24,15 @@ public class ShiftUpCom extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_subsystem.shiftForward();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_subsystem.shiftReverse();
+  }
 
   // Returns true when the command should end.
   @Override

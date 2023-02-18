@@ -9,19 +9,25 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 
 public class HerderSub extends SubsystemBase {
-  private CANSparkMax herderMotor = new CANSparkMax(5, MotorType.kBrushless);
+  private CANSparkMax rightHerderMotor = new CANSparkMax(Constants.clawRightMotorChannel, MotorType.kBrushless);
+  private CANSparkMax leftHerderMotor = new CANSparkMax(Constants.clawLeftMotorChannel, MotorType.kBrushless);
   
+
 
   /** Creates a new HerderSub. */
   public HerderSub() {
 
   }
 
-  public void driveHerder(double speed){
-    herderMotor.set(speed);
+  public void driveRightHerder(double speed){
+    rightHerderMotor.set(speed);
+  }
+  public void driveLeftHerder(double speed){
+    leftHerderMotor.set(speed);
   }
   @Override
   public void periodic() {
