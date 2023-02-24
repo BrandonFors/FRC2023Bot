@@ -30,8 +30,8 @@ public class TiltBackwardCom extends CommandBase {
   
   @Override
   public void execute() {
-    double speed = m_PIDController.calculate(m_subsystem.getTiltEncoder());
-    m_subsystem.driveTilt(speed);
+    // double speed = m_PIDController.calculate(m_subsystem.getTiltEncoder());
+    m_subsystem.driveTilt(-0.5);
   }
 
  

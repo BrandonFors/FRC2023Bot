@@ -8,20 +8,20 @@ import java.util.concurrent.CancellationException;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxAlternateEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class LadderSub extends SubsystemBase {
   /** Creates a new LadderSub. */
-  private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushless);
+  private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushed);
   
-  private final RelativeEncoder liftEncoder = liftMotor.getEncoder();
-  
+  private final RelativeEncoder liftEncoder = liftMotor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature,7);
   
   public LadderSub() {
-    
   }
 
   public void driveLift(double speed){
@@ -36,6 +36,6 @@ public class LadderSub extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Hieght", liftEncoder.getPosition());
   }
 }

@@ -8,6 +8,8 @@ package frc.robot;
 import frc.robot.commands.Autos;
 import frc.robot.commands.BalanceRobotCom;
 import frc.robot.commands.DriveCom;
+import frc.robot.commands.LiftDownCom;
+import frc.robot.commands.LiftUpCom;
 import frc.robot.commands.ShiftDownCom;
 import frc.robot.commands.ShiftUpCom;
 import frc.robot.commands.TeleDriveCom;
@@ -74,6 +76,8 @@ public class RobotContainer {
     new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
     new JoystickButton(driveStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
     new JoystickButton(driveStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
+    new JoystickButton(driveStick, 5).whileTrue(new LiftDownCom(m_LadderSub));
+    new JoystickButton(driveStick, 6).whileTrue(new LiftUpCom(m_LadderSub));
 
 
 

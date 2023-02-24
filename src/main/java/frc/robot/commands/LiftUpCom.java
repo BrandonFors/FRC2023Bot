@@ -34,8 +34,8 @@ public class LiftUpCom extends CommandBase {
   
   @Override
   public void execute() {
-    double speed = m_PIDController.calculate(m_subsystem.getLiftEncoder());
-    m_subsystem.driveLift(speed);
+    // double speed = m_PIDController.calculate(m_subsystem.getLiftEncoder());
+    m_subsystem.driveLift(0.4);
   }
 
   
