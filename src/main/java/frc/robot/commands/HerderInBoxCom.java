@@ -9,10 +9,10 @@ import frc.robot.subsystems.HerderSub;
 
 
 
-public class HerderOutCom extends CommandBase {
+public class HerderInBoxCom extends CommandBase {
   HerderSub m_subsystem;
   
-  public HerderOutCom(HerderSub subsystem) {
+  public HerderInBoxCom(HerderSub subsystem) {
     m_subsystem = subsystem;
     
     addRequirements(subsystem);
@@ -24,18 +24,22 @@ public class HerderOutCom extends CommandBase {
 
   @Override
   public void execute() {
-    m_subsystem.driveLeftHerder(-0.5);
-    m_subsystem.driveRightHerder(-0.5);
+    
+    m_subsystem.driveHerders(-0.5);
+   
+   
   }
 
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.driveLeftHerder(0);
-    m_subsystem.driveLeftHerder(0);
+    m_subsystem.driveHerders(0);
+
+    
   }
 
   @Override
   public boolean isFinished() {
+    
     return false;
   }
 }

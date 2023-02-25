@@ -4,15 +4,16 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.HerderSub;
 
 
 
-public class HerderInCom extends CommandBase {
+public class HerderOutConeCom extends CommandBase {
   HerderSub m_subsystem;
   
-  public HerderInCom(HerderSub subsystem) {
+  public HerderOutConeCom(HerderSub subsystem) {
     m_subsystem = subsystem;
     
     addRequirements(subsystem);
@@ -24,14 +25,16 @@ public class HerderInCom extends CommandBase {
 
   @Override
   public void execute() {
-    m_subsystem.driveLeftHerder(0.5);
-    m_subsystem.driveRightHerder(0.5);
+    m_subsystem.driveHerders(0.75);
+    SmartDashboard.putString("Herder Out", "Out");
+
+    
   }
 
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.driveLeftHerder(0);
-    m_subsystem.driveLeftHerder(0);
+    m_subsystem.driveHerders(0);
+  
   }
 
   @Override

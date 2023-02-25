@@ -16,7 +16,7 @@ public class LadderTiltSub extends SubsystemBase {
   private final CANSparkMax tiltMotor = new CANSparkMax(Constants.elevatorTiltMotorChannel, MotorType.kBrushless);
   private final RelativeEncoder tiltEncoder = tiltMotor.getEncoder();
   public LadderTiltSub() {
-    tiltEncoder.setPosition(0);
+    
 
   }
 
