@@ -25,7 +25,7 @@ public class HerderOutConeCom extends CommandBase {
 
   @Override
   public void execute() {
-    m_subsystem.driveHerders(0.75);
+    m_subsystem.driveHerders(3);
     SmartDashboard.putString("Herder Out", "Out");
 
     
