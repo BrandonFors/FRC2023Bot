@@ -87,12 +87,12 @@ public class RobotContainer {
   private void configureBindings() {
     new JoystickButton(driveStick, 1).whileTrue(new BalanceRobotCom(m_DriveTrainSub,0));
     new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
-    new JoystickButton(driveStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
-    new JoystickButton(driveStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
-    new JoystickButton(driveStick, 5).whileTrue(new LiftDownCom(m_LadderSub));
-    new JoystickButton(driveStick, 6).whileTrue(new LiftUpCom(m_LadderSub));
-    new POVButton(driveStick,270).whileTrue(new HerderInConeCom(m_HerderSub));
-    new POVButton(driveStick,90 ).whileTrue(new HerderOutConeCom(m_HerderSub));
+    new JoystickButton(intakeStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
+    new JoystickButton(intakeStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
+    new JoystickButton(intakeStick, 5).whileTrue(new LiftDownCom(m_LadderSub));
+    new JoystickButton(intakeStick, 6).whileTrue(new LiftUpCom(m_LadderSub));
+    new POVButton(intakeStick,270).whileTrue(new HerderInConeCom(m_HerderSub));
+    new POVButton(intakeStick,90 ).whileTrue(new HerderOutConeCom(m_HerderSub));
     
 
 
