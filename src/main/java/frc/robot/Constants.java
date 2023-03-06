@@ -43,13 +43,13 @@ public final class Constants {
   public static int elevatorTiltMotorChannel = 7;
   public static int elevatorLiftMotorChannel = 8;
   //el PID
-  public static double liftPVal = 0.0025;
+  public static double liftPVal = 0.02;
   public static double liftIVal = 0;
   public static double liftDVal = 0;
-  public static double liftTopSetpoint = 3.785711;
-  public static double liftBotSetpoint = 0;
+  public static double liftTopSetpoint = 7.33;
+  public static double liftBotSetpoint = 1;
 
-  public static double tiltPVal = 0.01;
+  public static double tiltPVal = 0.0025;
   public static double tiltIVal = 0;
   public static double tiltDVal = 0;
   public static double tiltTopSetpoint = 20;

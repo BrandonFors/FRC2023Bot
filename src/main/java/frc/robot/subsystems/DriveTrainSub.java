@@ -56,6 +56,12 @@ public class DriveTrainSub extends SubsystemBase {
   public double getPitch(){
     return navX.getPitch();
   }
+  public double getRightEncoder(){
+    return rightDriveEncoder.getPosition();
+  }
+  public double getLeftEncoder(){
+    return leftDriveEncoder.getPosition();
+  }
 
 
   @Override

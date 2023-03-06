@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import java.util.concurrent.CancellationException;
 
 import com.revrobotics.AbsoluteEncoder;
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxAlternateEncoder;
@@ -20,10 +21,10 @@ import frc.robot.Constants;
 public class LadderSub extends SubsystemBase {
   /** Creates a new LadderSub. */
   private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushed);
-  
-  // private final RelativeEncoder liftEncoder = liftMotor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature,7);
-  private final RelativeEncoder liftEncoder = liftMotor.getAlternateEncoder(SparkMaxAlternateEncoder.Type.kQuadrature, 8192);
-  public LadderSub() {
+  private final RelativeEncoder liftEncoder = liftMotor.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
+   public LadderSub() {
+    setLiftEncoder(1);
+    
   }
 
   public void driveLift(double speed){
@@ -34,6 +35,10 @@ public class LadderSub extends SubsystemBase {
 
   public double getLiftEncoder(){
     return liftEncoder.getPosition();
+  }
+  public void setLiftEncoder(double val){
+    liftEncoder.setPosition(val);
+    
   }
 
   @Override

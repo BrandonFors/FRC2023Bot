@@ -35,7 +35,7 @@ public class LiftUpCom extends CommandBase {
   @Override
   public void execute() {
     // double speed = m_PIDController.calculate(m_subsystem.getLiftEncoder());
-    m_subsystem.driveLift(0.4);
+    m_subsystem.driveLift(0.6);
   }
 
   
@@ -47,6 +47,9 @@ public class LiftUpCom extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_subsystem.getLiftEncoder()>Constants.liftTopSetpoint){
+      return true;
+    }else{
+      return false;}
   }
 }

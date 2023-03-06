@@ -10,6 +10,7 @@ import frc.robot.commands.BalanceRobotCom;
 import frc.robot.commands.DriveCom;
 import frc.robot.commands.HerderInConeCom;
 import frc.robot.commands.HerderOutConeCom;
+import frc.robot.commands.LadderAdjustCom;
 import frc.robot.commands.LiftDownCom;
 import frc.robot.commands.LiftUpCom;
 import frc.robot.commands.ShiftDownCom;
@@ -51,17 +52,27 @@ public class RobotContainer {
   private final SendableChooser<String> m_chooser;
 
   public static final String defaultAutoTxt = "Default Auto";
+  public static final String rightAutoTxt = "Right Auto";
+  public static final String centerAutoTxt = "Center Auto";
+  public static final String leftAutoTxt = "Left Auto";
+
 
   
   public RobotContainer() {
     m_chooser = new SendableChooser<>();
     m_chooser.addOption(defaultAutoTxt, defaultAutoTxt);
+    m_chooser.addOption(rightAutoTxt, rightAutoTxt);
+    m_chooser.addOption(centerAutoTxt, centerAutoTxt);
+    m_chooser.addOption(leftAutoTxt, leftAutoTxt);
+
 
     SmartDashboard.putData("Auto Choices", m_chooser);
     
     m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*(-0.75), ()-> driveStick.getRawAxis(0)*(-0.75)));
+    // m_LadderSub.setDefaultCommand(new LadderAdjustCom(m_LadderSub));
     // m_ShifterSub.setDefaultCommand(new ShiftDownCom(m_ShifterSub));
     configureBindings();  
+    
   }
 
   /**
@@ -78,10 +89,11 @@ public class RobotContainer {
     new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
     new JoystickButton(driveStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
     new JoystickButton(driveStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
-    new JoystickButton(driveStick, 6).whileTrue(new LiftDownCom(m_LadderSub));
-    new JoystickButton(driveStick, 5).whileTrue(new LiftUpCom(m_LadderSub));
+    new JoystickButton(driveStick, 5).whileTrue(new LiftDownCom(m_LadderSub));
+    new JoystickButton(driveStick, 6).whileTrue(new LiftUpCom(m_LadderSub));
     new POVButton(driveStick,270).whileTrue(new HerderInConeCom(m_HerderSub));
     new POVButton(driveStick,90 ).whileTrue(new HerderOutConeCom(m_HerderSub));
+    
 
 
 
@@ -96,6 +108,12 @@ public class RobotContainer {
     switch(m_chooser.getSelected()){
       case "Default Auto":
         return Autos.defaultAuto(m_DriveTrainSub);
+      case "Right Auto":
+        return Autos.rightAuto(m_DriveTrainSub);
+      case "Center Auto":
+        return Autos.centerAuto(m_DriveTrainSub);
+      case "Left Auto":
+        return Autos.leftAuto(m_DriveTrainSub);
     default:
        return Autos.defaultAuto(m_DriveTrainSub);
 

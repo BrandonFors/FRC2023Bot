@@ -17,6 +17,16 @@ public final class Autos {
   public static CommandBase defaultAuto(DriveTrainSub subsystem){
     return Commands.sequence(new DriveCom(subsystem, 0.25, 0));
   }
+  public static CommandBase leftAuto(DriveTrainSub subsystem){
+    return Commands.sequence(new DriveCom(subsystem, 0.25, 0));
+  }
+  public static CommandBase centerAuto(DriveTrainSub subsystem){
+    return Commands.sequence(new DriveCom(subsystem, 0.25, 0));
+  }
+  public static CommandBase rightAuto(DriveTrainSub subsystem){
+    return Commands.sequence(new DriveCom(subsystem, 0.25, 0));
+  }
+
 
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");
