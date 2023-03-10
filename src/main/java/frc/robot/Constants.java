@@ -46,7 +46,8 @@ public final class Constants {
   public static double liftPVal = 0.02;
   public static double liftIVal = 0;
   public static double liftDVal = 0;
-  public static double liftTopSetpoint = 7.33;
+  public static double liftMidSetpoint = 5.353271;
+  public static double liftTopSetpoint = 7.408447;
   public static double liftBotSetpoint = 1;
 
   public static double tiltPVal = 0.0025;

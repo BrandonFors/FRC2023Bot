@@ -89,10 +89,24 @@ public class RobotContainer {
     new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
     new JoystickButton(intakeStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
     new JoystickButton(intakeStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
-    new JoystickButton(intakeStick, 5).whileTrue(new LiftDownCom(m_LadderSub));
-    new JoystickButton(intakeStick, 6).whileTrue(new LiftUpCom(m_LadderSub));
+    new JoystickButton(intakeStick, 5).whileTrue(new LiftDownCom(m_LadderSub,Constants.liftBotSetpoint));
+    new JoystickButton(intakeStick, 6).whileTrue(new LiftUpCom(m_LadderSub,Constants.liftTopSetpoint));
+    if(intakeStick.getRawAxis(3)>0.2){
+      new LiftUpCom(m_LadderSub, Constants.liftMidSetpoint);
+    }
     new POVButton(intakeStick,270).whileTrue(new HerderInConeCom(m_HerderSub));
     new POVButton(intakeStick,90 ).whileTrue(new HerderOutConeCom(m_HerderSub));
+
+    if((new JoystickButton(intakeStick, 5).getAsBoolean()&&new JoystickButton(intakeStick, 1).getAsBoolean())){
+      new LiftDownCom(m_LadderSub,0);
+
+    }
+    if(new JoystickButton(intakeStick, 6).getAsBoolean()&&new JoystickButton(intakeStick, 1).getAsBoolean()){
+      new LiftUpCom(m_LadderSub,20);
+
+    }
+
+    
     
 
 

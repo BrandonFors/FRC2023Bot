@@ -14,9 +14,12 @@ public class LiftUpCom extends CommandBase {
   private final LadderSub m_subsystem;
   private final PIDController m_PIDController;
   // private final double speed;
+  private double limiter;
 
   /** Creates a new LiftUpCom. */
-  public LiftUpCom(LadderSub subsystem) {
+  public LiftUpCom(LadderSub subsystem, double limiter) {
+    this.limiter = limiter;
+    
     
     this.m_PIDController = new PIDController(Constants.liftPVal, Constants.liftIVal, Constants.liftDVal);
     m_PIDController.setSetpoint(Constants.liftTopSetpoint);
@@ -47,7 +50,7 @@ public class LiftUpCom extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(m_subsystem.getLiftEncoder()>Constants.liftTopSetpoint){
+    if(m_subsystem.getLiftEncoder()>limiter){
       return true;
     }else{
       return false;}
