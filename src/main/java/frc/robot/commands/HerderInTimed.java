@@ -21,16 +21,18 @@ public class HerderInTimed extends CommandBase {
     
     addRequirements(subsystem);
     this.time = time;
+    
+    
+  }
+
+  @Override
+  public void initialize() {
     //reset the timer
     timer.reset();
 
     //start timer
     timer.start();
-    
   }
-
-  @Override
-  public void initialize() {}
 
   @Override
   public void execute() {

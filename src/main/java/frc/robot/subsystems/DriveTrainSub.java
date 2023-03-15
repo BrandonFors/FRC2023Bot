@@ -63,6 +63,12 @@ public class DriveTrainSub extends SubsystemBase {
   public double getLeftEncoder(){
     return leftDriveEncoder.getPosition();
   }
+  public void setRightEncoder(double setpoint){
+    rightDriveEncoder.setPosition(setpoint);
+  }
+  public void setLeftEncoder(double setpoint){
+    leftDriveEncoder.setPosition(setpoint);
+  }
 
 
   @Override

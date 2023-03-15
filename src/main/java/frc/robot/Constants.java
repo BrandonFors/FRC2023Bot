@@ -33,7 +33,7 @@ public final class Constants {
 
 
   //PID
-  public static double balPVal = 0.1;
+  public static double balPVal = 0.035;
   public static double balIVal = 0;
   public static double balDVal = 0;
   public static double balSetPoint = 0;

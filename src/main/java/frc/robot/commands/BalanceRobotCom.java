@@ -31,7 +31,7 @@ public class BalanceRobotCom extends CommandBase {
   @Override
   public void execute() {
     double speed = m_PIDController.calculate(m_DriveTrainSubsystem.getPitch());
-    m_DriveTrainSubsystem.driveRobot(speed,0);
+    m_DriveTrainSubsystem.driveRobot(-speed,0);
   }
 
   @Override

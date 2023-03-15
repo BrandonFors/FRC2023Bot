@@ -16,9 +16,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 
 public class LadderSub extends SubsystemBase {
+
   /** Creates a new LadderSub. */
   private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushed);
   private final RelativeEncoder liftEncoder = liftMotor.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
@@ -26,6 +28,7 @@ public class LadderSub extends SubsystemBase {
     setLiftEncoder(5.353271);
     
   }
+  
 
   public void driveLift(double speed){
     liftMotor.set(speed);
@@ -44,5 +47,6 @@ public class LadderSub extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Hieght", liftEncoder.getPosition());
+
   }
 }

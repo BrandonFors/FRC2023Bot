@@ -2,30 +2,32 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
 package frc.robot.commands;
 
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.LadderTiltSub;
+import frc.robot.subsystems.ShifterSub;
 
-public class TiltBackwardTimedCom extends CommandBase {
-  private final LadderTiltSub m_subsystem;
-  private final PIDController m_PIDController;
+public class AutoShiftUp extends CommandBase {
+  /** Creates a new ShiftUpCom. */
+  private final ShifterSub m_subsystem;
   private final double time;
   private Timer timer = new Timer();
-  public TiltBackwardTimedCom(LadderTiltSub subsystem, double time) {
-    this.m_PIDController = new PIDController(Constants.tiltPVal, Constants.tiltIVal, Constants.tiltDVal);
-    m_PIDController.setSetpoint(-Constants.tiltTopSetpoint);
-    
+  
+  public AutoShiftUp(ShifterSub subsystem, double time) {
     m_subsystem = subsystem;
     
     addRequirements(subsystem);
+    
+ 
     this.time = time;
-  
   }
 
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     //reset the timer
@@ -35,22 +37,25 @@ public class TiltBackwardTimedCom extends CommandBase {
     timer.start();
   }
 
+  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // double speed = m_PIDController.calculate(m_subsystem.getTiltEncoder());
-    m_subsystem.driveTilt(0.2);
+    m_subsystem.shiftForward();
   }
 
+  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.driveTilt(0);
+    m_subsystem.shiftReverse();
   }
 
+  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     if(timer.get()>time){
       return true;
    }
    return false;
+    }
+    
   }
-}

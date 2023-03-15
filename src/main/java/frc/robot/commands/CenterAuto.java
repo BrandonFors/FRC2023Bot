@@ -33,22 +33,19 @@ import edu.wpi.first.wpilibj2.command.Command;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 
 public class CenterAuto extends SequentialCommandGroup {
-  private final DriveTrainSub m_DriveTrainSub = new DriveTrainSub();
-  private final HerderSub m_HerderSub = new HerderSub();
-  private final LadderSub m_LadderSub = new LadderSub();
-  private final LadderTiltSub m_LadderTiltSub = new LadderTiltSub();
-  private final ShifterSub m_ShifterSub = new ShifterSub();
+  
   /** Creates a new CenterAuto. */
-  public CenterAuto() {
+  public CenterAuto(DriveTrainSub m_DriveTrainSub,HerderSub m_HerderSub,LadderSub m_LadderSub,LadderTiltSub m_LadderTiltSub) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     
     addCommands(
-      new TiltForwardTimedCom(m_LadderTiltSub,1),
       new LiftUpCom(m_LadderSub, Constants.liftTopSetpoint),
-      new HerderOutTimed(m_HerderSub,1),
+      new TiltForwardTimedCom(m_LadderTiltSub,2.5),
+      
+      new HerderOutTimed(m_HerderSub,3),
       new LiftDownCom(m_LadderSub, Constants.liftMidSetpoint),
-      new TiltBackwardTimedCom(m_LadderTiltSub, 1)
+      new TiltBackwardTimedCom(m_LadderTiltSub, 2.5)
 
 
       

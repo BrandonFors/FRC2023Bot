@@ -30,11 +30,9 @@ public class AutoDriveCom extends CommandBase {
     this.twist = twist;
     this.distance = distance;
     this.time = time;
-    //reset the timer
-    timer.reset();
-
-    //start timer
-    timer.start();
+    
+    subsystem.setRightEncoder(0);
+    subsystem.setLeftEncoder(0);
   }
   
 
@@ -44,7 +42,11 @@ public class AutoDriveCom extends CommandBase {
 
   @Override
   public void initialize() {
+//reset the timer
+timer.reset();
 
+//start timer
+timer.start();
 
   }
 
@@ -64,7 +66,7 @@ public class AutoDriveCom extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(distance<m_subsystem.getRightEncoder()){
+    if(distance<Math.abs(m_subsystem.getRightEncoder())){
       return true;
     }else{
       return false;
