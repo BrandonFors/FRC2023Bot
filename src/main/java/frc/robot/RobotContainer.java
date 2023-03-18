@@ -75,7 +75,7 @@ public class RobotContainer {
 
     SmartDashboard.putData("Auto Choices", m_chooser);
     
-    m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*(-0.75), ()-> driveStick.getRawAxis(0)*(-0.75)));
+    m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*(-0.85), ()-> driveStick.getRawAxis(0)*(-0.85)));
     
     // m_LadderSub.setDefaultCommand(new LadderAdjustCom(m_LadderSub));
     // m_ShifterSub.setDefaultCommand(new ShiftDownCom(m_ShifterSub));
@@ -131,7 +131,7 @@ public class RobotContainer {
     
     switch(m_chooser.getSelected()){
       case "Default Auto":
-        return  Autos.defCubeAuto(m_DriveTrainSub,m_HerderSub,m_LadderSub,m_LadderTiltSub, m_ShifterSub);
+        return  Autos.TestAuto(m_DriveTrainSub,m_HerderSub,m_LadderSub,m_LadderTiltSub, m_ShifterSub);
       case "Default Cone Auto":
         return Autos.defConeAuto(m_DriveTrainSub,m_HerderSub,m_LadderSub,m_LadderTiltSub, m_ShifterSub);
       case "Center Cube Auto":

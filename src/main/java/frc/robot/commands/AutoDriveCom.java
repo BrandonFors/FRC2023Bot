@@ -30,7 +30,7 @@ public class AutoDriveCom extends CommandBase {
     this.twist = twist;
     this.distance = distance;
     this.time = time;
-    
+    //this should be in the initialize section
     subsystem.setRightEncoder(0);
     subsystem.setLeftEncoder(0);
   }

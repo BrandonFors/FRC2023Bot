@@ -37,6 +37,7 @@ public class HerderOutTimed extends CommandBase {
   @Override
   public void execute() {
     m_subsystem.driveHerders(3);
+    //3
     SmartDashboard.putString("Herder In", "In");
     
    

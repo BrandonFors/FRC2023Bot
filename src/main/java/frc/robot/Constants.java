@@ -33,9 +33,10 @@ public final class Constants {
 
 
   //PID
-  public static double balPVal = 0.035;
-  public static double balIVal = 0;
-  public static double balDVal = 0;
+  public static double balPVal = 0.03;
+  public static double balIVal = 0.003;
+  //0.005
+  public static double balDVal = 0.005;
   public static double balSetPoint = 0;
 
 
@@ -47,7 +48,7 @@ public final class Constants {
   public static double liftIVal = 0;
   public static double liftDVal = 0;
   public static double liftMidSetpoint = 5.353271;
-  public static double liftTopSetpoint = 7.408447;
+  public static double liftTopSetpoint = 7.35;
   public static double liftBotSetpoint = 1;
 
   public static double tiltPVal = 0.0025;

@@ -20,6 +20,13 @@ public final class Autos {
   // public static CommandBase exampleAuto(DriveTrainSub subsystem) {
   //   return Commands.sequence(subsystem.exampleMethodCommand(), new ExampleCommand(subsystem));
   // }
+  public static CommandBase TestAuto(DriveTrainSub m_DriveTrainSub,HerderSub m_HerderSub,LadderSub m_LadderSub,LadderTiltSub m_LadderTiltSub, ShifterSub ShiftSub){
+    return Commands.sequence(
+   
+    new AutoDriveCom(m_DriveTrainSub, -1, 0, 20, 0),
+      new BalanceRobotCom(m_DriveTrainSub, 0)
+    );
+  }
   public static CommandBase centerConeAuto(DriveTrainSub m_DriveTrainSub,HerderSub m_HerderSub,LadderSub m_LadderSub,LadderTiltSub m_LadderTiltSub, ShifterSub ShiftSub){
     return Commands.sequence(
     new AutoShiftUp(ShiftSub, 0.1),
@@ -44,13 +51,14 @@ public final class Autos {
     new LiftDownCom(m_LadderSub, Constants.liftMidSetpoint),
     new HerderOutTimed(m_HerderSub,0.5),
     new TiltBackwardTimedCom(m_LadderTiltSub, 4),
-    new AutoDriveCom(m_DriveTrainSub, -1, 0, 110, 0)
+    new AutoDriveCom(m_DriveTrainSub, -1, 0, 275, 0)
 
     );
   }
   public static CommandBase centerCubeAuto(DriveTrainSub m_DriveTrainSub,HerderSub m_HerderSub,LadderSub m_LadderSub,LadderTiltSub m_LadderTiltSub, ShifterSub ShiftSub){
     return Commands.sequence(
       new AutoShiftUp(ShiftSub, 0.1),
+      new LiftUpCom(m_LadderSub, Constants.liftMidSetpoint),
       new HerderInTimed(m_HerderSub, 0.1),
       new HerderOutTimed(m_HerderSub,0.5),
       new AutoDriveCom(m_DriveTrainSub, -1, 0, 70, 0),
@@ -64,9 +72,10 @@ public final class Autos {
   public static CommandBase defCubeAuto(DriveTrainSub m_DriveTrainSub,HerderSub m_HerderSub,LadderSub m_LadderSub,LadderTiltSub m_LadderTiltSub, ShifterSub ShiftSub){
     return Commands.sequence(
       new AutoShiftUp(ShiftSub, 0.1),
+      new LiftUpCom(m_LadderSub, Constants.liftTopSetpoint),
       new HerderInTimed(m_HerderSub, 0.1),
       new HerderOutTimed(m_HerderSub,0.5),
-      new AutoDriveCom(m_DriveTrainSub, -1, 0, 110, 0)
+      new AutoDriveCom(m_DriveTrainSub, -1, 0, 275, 0)
     );
   }
 
