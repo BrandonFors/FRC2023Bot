@@ -77,6 +77,17 @@ public class DriveTrainSub extends SubsystemBase {
     SmartDashboard.putNumber("Gyro", navX.getAngle());
     SmartDashboard.putNumber("Right Encoder", leftDriveEncoder.getPosition());
     SmartDashboard.putNumber("Left Encoder", rightDriveEncoder.getPosition());
+    
+    SmartDashboard.putNumber("FrontRightTemp", FrontRightMotor.getMotorTemperature());
+    SmartDashboard.putNumber("FrontLeftTemp", FrontLeftMotor.getMotorTemperature());
+    SmartDashboard.putNumber("BackLeftTemp", BackLeftMotor.getMotorTemperature());
+    SmartDashboard.putNumber("BackRightTemp", BackRightMotor.getMotorTemperature());
+
+    SmartDashboard.putNumber("FrontRightAMP", FrontRightMotor.getAppliedOutput());
+    SmartDashboard.putNumber("FrontLeftAMP", FrontLeftMotor.getAppliedOutput());
+    SmartDashboard.putNumber("BackRightAMP", BackRightMotor.getAppliedOutput());
+    SmartDashboard.putNumber("BackLeftAMP", BackLeftMotor.getAppliedOutput());
+
 
 
   }
