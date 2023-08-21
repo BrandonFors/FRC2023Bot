@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class LadderTiltSub extends SubsystemBase {
-  private final CANSparkMax tiltMotor = new CANSparkMax(Constants.elevatorTiltMotorChannel, MotorType.kBrushless);
+  private final CANSparkMax tiltMotor = new CANSparkMax(Constants.elevatorTiltMotorChannel, MotorType.kBrushed);
   private final RelativeEncoder tiltEncoder = tiltMotor.getEncoder();
   public LadderTiltSub() {
     
