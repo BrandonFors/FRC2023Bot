@@ -10,11 +10,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.SparkMaxRelativeEncoder;
 import frc.robot.Constants;
 
 public class LadderTiltSub extends SubsystemBase {
+
   private final CANSparkMax tiltMotor = new CANSparkMax(Constants.elevatorTiltMotorChannel, MotorType.kBrushed);
-  private final RelativeEncoder tiltEncoder = tiltMotor.getEncoder();
+  private final RelativeEncoder tiltEncoder = tiltMotor.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
   public LadderTiltSub() {
     
 
