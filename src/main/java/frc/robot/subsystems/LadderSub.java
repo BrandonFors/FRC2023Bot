@@ -25,7 +25,7 @@ public class LadderSub extends SubsystemBase {
   private final CANSparkMax liftMotor = new CANSparkMax(Constants.elevatorLiftMotorChannel, MotorType.kBrushed);
   private final RelativeEncoder liftEncoder = liftMotor.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
    public LadderSub() {
-    setLiftEncoder(5.353271);
+    setLiftEncoder(Constants.liftMidSetpoint);
     
   }
   

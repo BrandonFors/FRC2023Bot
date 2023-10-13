@@ -12,12 +12,13 @@ import frc.robot.subsystems.LadderTiltSub;
 public class TiltForwardCom extends CommandBase {
   private final LadderTiltSub m_subsystem;
   private final PIDController m_PIDController;
-  public TiltForwardCom(LadderTiltSub subsystem) {
+  double limit;
+  public TiltForwardCom(LadderTiltSub subsystem, double limit) {
     this.m_PIDController = new PIDController(Constants.tiltPVal, Constants.tiltIVal, Constants.tiltDVal);
     m_PIDController.setSetpoint(-Constants.tiltTopSetpoint);
     
     m_subsystem = subsystem;
-    
+    this.limit=limit;
     addRequirements(subsystem);
   }
 
@@ -37,6 +38,9 @@ public class TiltForwardCom extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_subsystem.getTiltEncoder()>limit){
+      return true;
+    }else{
+      return false;}
   }
 }

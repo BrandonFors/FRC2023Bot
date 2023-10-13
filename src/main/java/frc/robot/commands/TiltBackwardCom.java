@@ -12,13 +12,14 @@ import edu.wpi.first.math.controller.PIDController;
 public class TiltBackwardCom extends CommandBase {
   private final LadderTiltSub m_subsystem;
   private final PIDController m_PIDController;
+  double limit;
   
-  public TiltBackwardCom(LadderTiltSub subsystem) {
+  public TiltBackwardCom(LadderTiltSub subsystem, double limit) {
     this.m_PIDController = new PIDController(Constants.tiltPVal, Constants.tiltIVal, Constants.tiltDVal);
     m_PIDController.setSetpoint(Constants.tiltBotSetpoint);
     
     m_subsystem = subsystem;
-    
+    this.limit=limit;
     addRequirements(subsystem);
     
   }
@@ -43,6 +44,9 @@ public class TiltBackwardCom extends CommandBase {
   
   @Override
   public boolean isFinished() {
-    return false;
+    if(m_subsystem.getTiltEncoder()<limit){
+      return true;
+    }else{
+      return false;}
   }
 }

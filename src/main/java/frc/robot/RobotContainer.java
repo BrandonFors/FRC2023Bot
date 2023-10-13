@@ -94,9 +94,9 @@ public class RobotContainer {
    */
   private void configureBindings() {
     new JoystickButton(driveStick, 1).whileTrue(new BalanceRobotCom(m_DriveTrainSub,0));
-    new JoystickButton(driveStick, 4).toggleOnTrue(new ShiftUpCom(m_ShifterSub));
-    new JoystickButton(intakeStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub));
-    new JoystickButton(intakeStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub));
+    new JoystickButton(driveStick, 4).whileTrue(new ShiftUpCom(m_ShifterSub));
+    new JoystickButton(intakeStick, 2).whileTrue(new TiltForwardCom(m_LadderTiltSub,Constants.tiltTopSetpoint));
+    new JoystickButton(intakeStick, 3).whileTrue(new TiltBackwardCom(m_LadderTiltSub,Constants.liftBotSetpoint));
     new JoystickButton(intakeStick, 5).whileTrue(new LiftDownCom(m_LadderSub,Constants.liftBotSetpoint));
     new JoystickButton(intakeStick, 6).whileTrue(new LiftUpCom(m_LadderSub,Constants.liftTopSetpoint));
     if(intakeStick.getRawAxis(3)>0.2){

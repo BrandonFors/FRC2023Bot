@@ -31,7 +31,7 @@ public class TiltBackwardTimedCom extends CommandBase {
     //reset the timer
     timer.reset();
 
-    //start timer
+    //start 
     timer.start();
   }
 
